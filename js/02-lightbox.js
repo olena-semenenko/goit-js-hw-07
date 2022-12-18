@@ -5,6 +5,12 @@ console.log(galleryItems);
 const gallery = document.querySelector('.gallery');
 gallery.addEventListener('click', showImage);
 
+createMarkup(galleryItems);
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
+
 function createMarkup(array) {
   const markup = array.reduce((acc, item) => {
     const { preview, original, description } = item;
@@ -16,17 +22,6 @@ function createMarkup(array) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
 }
-createMarkup(galleryItems);
-const lightbox = new SimpleLightbox('.gallery a', {
-  /* options */
-});
-
 function showImage(event) {
   event.preventDefault();
-  if (event.target.classList.contains('gallery__image')) {
-    const title = event.target.alt;
-    lightbox.defaultOptions.captionType = 'text';
-    lightbox.defaultOptions.captionClass = `${title}`;
-    lightbox.defaultOptions.captionDelay = 250;
-  }
 }

@@ -3,7 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 const gallery = document.querySelector('.gallery');
-gallery.addEventListener('click', showImage);
 
 createMarkup(galleryItems);
 const lightbox = new SimpleLightbox('.gallery a', {
@@ -21,7 +20,4 @@ function createMarkup(array) {
   }, '');
 
   gallery.insertAdjacentHTML('beforeend', markup);
-}
-function showImage(event) {
-  event.preventDefault();
 }
